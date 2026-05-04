@@ -1,0 +1,1 @@
+{% snapshot budget_snapshot_hard_deletes_ignore %}

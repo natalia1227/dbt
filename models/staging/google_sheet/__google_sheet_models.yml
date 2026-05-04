@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_google_sheet_budget.sql
+    config:
+      contract:
+        enforced: true
+    description: >
+      Data about all budget in demo.
+    columns:
+      - name: budget_id
+        data_tests:
+          - not_null
+        data_type: text
+        constraints:
+          - type: not_null
+        description: >
+          UUID for each unique budget on platform.
+      - name: budget_name
+        data_type: TEXT                      
+        constraints:
+          - type: not_null
+        description: >
+          Name of the budget.
+      - name: unit_price_usd
+        data_type: real
+        constraints:
+          - type: not_null
+        description: >
+          Price of the budget.
+      - name: inventory
+        data_type: NUMBER                      
+        constraints:
+          - type: not_null
+        description: >
+          Amount of the inventory we have for this budget.
+      - name: date_load
+        data_type: TIMESTAMP_TZ
+        constraints:
+          - type: not_null   
+        description: >
+          Date that the data was loaded.

@@ -1,8 +1,3 @@
-{{ config(
-materialized='incremental',
-unique_key='_FIVETRAN_SYNCED',
-incremental_strategy='delete+insert'
-) }}
 
 with 
 
@@ -26,7 +21,3 @@ renamed as (
 )
 
 select * from renamed
-
-{% if is_incremental() %}
-WHERE _FIVETRAN_SYNCED >= DATEADD(day, -3, CURRENT_DATE())
-{% endif %}

@@ -1,8 +1,3 @@
-{{ config(
-materialized='incremental',
-incremental_strategy='append'
-) }}
-
 with 
 
 source as (
@@ -27,9 +22,5 @@ renamed as (
 )
 
 select * from renamed
-
-{% if is_incremental() %}
-WHERE ADDRESS_ID > (SELECT MAX(ADDRESS_ID) FROM {{ this }})
-{% endif %}
 
 
